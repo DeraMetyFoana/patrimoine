@@ -5,7 +5,6 @@ import static java.time.temporal.ChronoUnit.DAYS;
 import static school.hei.patrimoine.modele.Devise.NON_NOMMEE;
 
 import java.time.LocalDate;
-
 import lombok.Getter;
 import school.hei.patrimoine.modele.Devise;
 
