@@ -62,9 +62,11 @@ jobs:
 
       - name: Setup Java
         uses: actions/setup-java@v4.2.1
+
         with:
           java-version: '21'
           distribution: 'corretto'
 
       - name: Run format script
         run: chmod +x format.sh && ./format.sh && git diff --exit-code reformat
+
