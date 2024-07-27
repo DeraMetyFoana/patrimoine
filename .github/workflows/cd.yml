@@ -45,9 +45,3 @@ jobs:
         run: |
           mvn deploy -DaltDeploymentRepository=codeartifact::default::https://${{ vars.CODEARTIFACT_DOMAIN }}-${{ vars.CODEARTIFACT_DOMAIN_OWNER }}.d.codeartifact.${{ env.AWS_REGION }}.amazonaws.com/maven/${{ vars.CODEARTIFACT_REPOSITORY }}/ \
           -Daws.codeartifact.token=${{ env.CODEARTIFACT_AUTH_TOKEN }} -DskipTests
-
-      - name: Publish to Maven Repository Central
-        uses: WasiqB/maven-publish-action@v1
-        with:
-          nexus_username: ${{ secrets.NEXUS_USERNAME }}
-          nexus_password: ${{ secrets.NEXUS_PASSWORD }}
