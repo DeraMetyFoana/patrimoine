@@ -1,0 +1,27 @@
+name: Deploy Maven Package to GitHub Packages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Publish Maven Package
+        run: mvn deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/${{ vars.REPOSITORY_OWNER }}/${{vars_REPOSITORY_NAME}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GTB_TOKEN }}
